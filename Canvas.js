@@ -29,6 +29,13 @@ Canvas.prototype.render = function(shape) {
   this.renderContent();
 };
 
+Canvas.prototype.getRelativeMousePositionInMods = function(mouseX, mouseY) {
+  return [
+    Math.ceil( (mouseX - this.canvas.offsetLeft) / this.modularUnit ), 
+    Math.ceil( (mouseY - this.canvas.offsetTop) / this.modularUnit )
+  ];
+};
+
 Canvas.prototype.renderContent = function(tetris) {
 
 };
