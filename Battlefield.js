@@ -1,9 +1,11 @@
 
 
 
-const Battlefield = function() {
+const Battlefield = function(ID) {
+	this.ID = ID;
 	this.grid = new Grid(10,10);
 }
 
-const battlefield_1 = new Battlefield();
+
+const battlefieldOne = new Battlefield('One');
 
