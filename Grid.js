@@ -33,7 +33,7 @@ Grid.prototype.get = function(x,y) {
 	return this.grid[x][y];
 };
 Grid.prototype.set = function(x,y, obj) {
-	this.get(x,y) = obj;
+	this.get(x,y).extend(obj);
 	console.log( this.get(x,y) )
 };
 
