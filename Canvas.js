@@ -80,4 +80,9 @@ Canvas.prototype.drawRectGrid = function() {
   };
 };
 
-
+Canvas.prototype.fillGridField = function(x) {
+  this.ctx.beginPath();
+  this.ctx.moveTo(x,0);
+  this.ctx.lineTo(x, this.DOMElement.height);
+  this.ctx.stroke();
+};
