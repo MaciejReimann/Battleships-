@@ -1,6 +1,4 @@
-const Empty = function() {
-	this.isEmpty = true;
-}
+
 
 const GridField = function(x,y) {
 	this.x = x;
@@ -23,18 +21,20 @@ Grid.prototype.create = function() {
 	for (let i = 0; i < this.a; i ++) {	
 		this.grid[i] = [];	
 		for (let j = 0; j < this.b; j ++) {					
-			this.grid[i][j] = new GridField(i,j);
+			this.grid[i][j] = new GridField(i + 1, j + 1);
 		};
 	};
 	return this.grid;
 };
 Grid.prototype.get = function(x,y) {
 	if(!this.grid) {this.create()};
+	if (!x && !y) {
+		return this.grid;
+	}
 	return this.grid[x][y];
 };
 Grid.prototype.set = function(x,y, obj) {
 	this.get(x,y).extend(obj);
-	console.log( this.get(x,y) )
 };
 
 let field = new GridField (2,3)
