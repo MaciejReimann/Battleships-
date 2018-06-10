@@ -53,6 +53,31 @@ Canvas.prototype.getRelativeMousePositionInMods = function(mouseX, mouseY) {
   ];
 };
 
-// Canvas.prototype.drawGrid = function() {
-//   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-// };
+Canvas.prototype.crossHorizontalLine = function(y) {
+  this.ctx.beginPath();
+  this.ctx.moveTo(0,y);
+  this.ctx.lineTo(this.DOMElement.width, y);
+  this.ctx.stroke();
+};
+
+Canvas.prototype.crossVerticalLine = function(x) {
+  this.ctx.beginPath();
+  this.ctx.moveTo(x,0);
+  this.ctx.lineTo(x, this.DOMElement.height);
+  this.ctx.stroke();
+};
+
+Canvas.prototype.drawRectGrid = function() {
+  let width = this.DOMElement.width;
+  let height = this.DOMElement.height;
+  let mod_W = this.modularUnit;
+  let mod_H = this.modularUnit;
+  while (mod_W < this.DOMElement.width && mod_H < this.DOMElement.height) {
+    this.crossHorizontalLine(mod_W);
+    this.crossVerticalLine(mod_H);
+    mod_W += this.modularUnit;
+    mod_H += this.modularUnit;
+  };
+};
+
+

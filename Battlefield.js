@@ -9,3 +9,6 @@ const Battlefield = function(ID, canvasConfig, parentEl) {
 Battlefield.prototype = Object.create(Grid.prototype);
 Battlefield.prototype.constructor = Battlefield;
 
+Battlefield.prototype.drawGrid = function() {
+	this.canvas.drawRectGrid();
+};

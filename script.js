@@ -19,7 +19,7 @@ const listener_1 = ['mousemove', mouseHandler];
 
 const listener_2 = ['mousemove', mouseHandler];
 	
-
+battlefield_1.drawGrid()
 
 // battlefield_1.DOMElement.canvas.addEventListener("mousemove", mouseHandler);
 // battlefield_1.DOMElement.canvas.addEventListener("click", mouseHandler);
