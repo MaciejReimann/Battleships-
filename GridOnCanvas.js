@@ -20,6 +20,7 @@ GridOnCanvas.prototype.highlightField = function(x,y) {
 
 	// console.log( this.getField(x,y) )
 	this.getField(x,y).highlight("");
+	this.getField(x,y).drawDot();
 
 	// console.log(ctx)
 
