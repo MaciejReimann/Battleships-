@@ -34,7 +34,7 @@ Canvas.prototype.addListener = function(listener) { // array
     this.eventListeners.forEach( listener => 
       this.DOMElement.addEventListener(listener[0], listener[1])
     );
-  }  
+  }
   return this.eventListeners
 };
 

@@ -4,6 +4,7 @@ const GridField = function(x, y, canvas) {
 	this.x = x;
 	this.y = y;
 	this.canvas = canvas;
+	this.status = 'empty';
 };
 GridField.prototype.extend = function(obj) {
 	let properties = Object.keys(obj);
@@ -12,23 +13,34 @@ GridField.prototype.extend = function(obj) {
 		this[prop] = value;
 	});
 };
-GridField.prototype.outline = function(mode) {
-	this.isOutlined = true;
+GridField.prototype.outline = function(lineWidth) {
 	let ctx = this.canvas.ctx;
 	let mod = this.canvas.modularUnit;
-	this.position_x = this.x * this.canvas.modularUnit;
-	this.position_y = this.y * this.canvas.modularUnit;
+	this.position_x = this.x * mod;
+	this.position_y = this.y * mod;
+	ctx.lineWidth = lineWidth;
 	ctx.rect(this.position_x - mod, this.position_y - mod, mod, mod);
-	if(mode === "crossed") {
-		this.cross();
-	}
 	ctx.stroke();
 };
-GridField.prototype.highlighted = function() {
-	console.log(this.x, this.y, "highlighted")
+GridField.prototype.highlighted = function(lineWidth, fillColor) {
+	this.canvas.ctx.beginPath();
+	this.outline(lineWidth * 2);
+	this.canvas.ctx.fillStyle = fillColor;
+	this.status = 'highlighted';
 };
-GridField.prototype.drawCross = function() {
-	console.log(this.x, this.y, "crossed")
+GridField.prototype.drawCross = function(lineWidth) {
+
+	this.highlighted(lineWidth);
+	let ctx = this.canvas.ctx;
+	let mod = this.canvas.modularUnit;
+	ctx.beginPath();
+	ctx.lineWidth = lineWidth;
+	ctx.moveTo(this.position_x, this.position_y);
+	ctx.lineTo(this.position_x - mod, this.position_y - mod);
+	ctx.moveTo(this.position_x - mod, this.position_y);
+	ctx.lineTo(this.position_x, this.position_y - mod);
+	ctx.stroke();
+	this.status = 'crossed';
 };
 GridField.prototype.drawDot = function(r) {
 	this.hasDot = true;
@@ -39,7 +51,10 @@ GridField.prototype.drawDot = function(r) {
 	ctx.beginPath();
 	ctx.arc(this.center_x, this.center_y, r, 0, 360);
 	ctx.fill();
+	this.status = 'dotted';
 };
-GridField.prototype.filled = function() {
-	console.log(this.x, this.y, "filled")
+GridField.prototype.filled = function(lineWidth, color) {	
+	this.highlighted(lineWidth, color);
+	this.canvas.ctx.fill();
+	this.status = 'filled';
 };

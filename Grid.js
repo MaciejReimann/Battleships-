@@ -22,18 +22,6 @@ Grid.prototype.getField = function(x,y) {
 	}
 	return this.grid[x][y];
 };
-Grid.prototype.setField = function(x,y, obj) {
+Grid.prototype.extendField = function(x,y, obj) {
 	this.getField(x,y).extend(obj);
 };
-
-let field = new GridField (2,3)
-
-let extension1 = {
-	isEmpty: false
-}
-let extension2 = {
-	type: "one mast",
-	sink: function() {
-		console.log("has been sunk")
-	},
-}

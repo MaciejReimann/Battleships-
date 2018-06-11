@@ -3,28 +3,47 @@
 console.log("Hi there!")
 
 const view = {};
-view.boardPlayer_1 = document.querySelector('.player-1.board')
-view.boardPlayer_2 = document.querySelector('.player-2.board')
-
-const battlefieldCanvasConfig_1 = new CanvasConfig(40, 10, 10, 'battlefield-1');
-const battlefieldCanvasConfig_2 = new CanvasConfig(40, 10, 10, 'battlefield-2');
-
-const battlefield_1 = new Battlefield('One', battlefieldCanvasConfig_1, view.boardPlayer_1);
-const battlefield_2 = new Battlefield('Two', battlefieldCanvasConfig_2, view.boardPlayer_2);
-
-const c = battlefield_1.canvas;
-
 
 const listener_1 = ['mousemove', mouseHandler];
 
-const listener_2 = ['mousemove', mouseHandler];
+
+// ------- PLAYER ONE ---------
+
+view.boardPlayer_1 = document.querySelector('.player-1.board')
+const battlefieldCanvasConfig_1 = new CanvasConfig(40, 10, 10, 'battlefield-1');
+const battlefield_1 = new Battlefield('One', battlefieldCanvasConfig_1, view.boardPlayer_1);
+battlefield_1.drawGrid();
+battlefield_1.addListener(listener_1);
+
+
+// ------- PLAYER TWO ---------
+
+view.boardPlayer_2 = document.querySelector('.player-2.board')
+const battlefieldCanvasConfig_2 = new CanvasConfig(40, 10, 10, 'battlefield-2');
+const battlefield_2 = new Battlefield('Two', battlefieldCanvasConfig_2, view.boardPlayer_2);
+battlefield_2.drawGrid();
+
+
+
+
+
 	
-battlefield_1.drawGrid()
+
 
 battlefield_1.markAs(2, 5, 'active');
 battlefield_1.markAs(2, 6, 'hit');
 battlefield_1.markAs(2, 7, 'missed');
 battlefield_1.markAs(2, 8, 'ship');
+
+
+
+const game = (function() {
+	let phase;
+
+	function deployment(){
+	}
+})();
+
 
 // battlefield_1.DOMElement.canvas.addEventListener("mousemove", mouseHandler);
 // battlefield_1.DOMElement.canvas.addEventListener("click", mouseHandler);
