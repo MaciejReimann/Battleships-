@@ -26,7 +26,11 @@ Battlefield.prototype.markAs = function(x, y, option) {
 		this.gridOnCanvas.filled(x, y);
 	}
 };
-	
-// Battlefield.prototype.highlightField = function(x, y) {
-// 	this.canvas.drawRectGrid();
-// };
+
+Battlefield.prototype.addShip = function(x, y, numberOfMasts) {
+	let feature = {
+		numberOfMasts: numberOfMasts
+	};
+	this.gridOnCanvas.getOneField(x, y).extend(feature);
+};
+

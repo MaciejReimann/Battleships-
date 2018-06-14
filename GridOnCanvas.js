@@ -15,6 +15,9 @@ GridOnCanvas.prototype.append = function(parentElement) {
 	return this;
 };
 
+GridOnCanvas.prototype.getOneField = function(x,y) {
+	return this.getField(x,y);
+};
 GridOnCanvas.prototype.getAllFields = function() {
 	return this.getField();
 };
