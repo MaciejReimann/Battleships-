@@ -1,4 +1,4 @@
-# Maze Generator
+# Mazes Generator
 Vanilla JS web app that generates mazes of various sizes.
 ___
 
@@ -12,7 +12,7 @@ Build an app that draws a rectangular maze, which is possible to escape: \
 &nbsp;&nbsp; 2. Play with html `<canvas>`;
 
 ## See live v.1.0:
-Go to: 
+Go to: https://mazesgenerator.herokuapp.com/ and follow the instructions.
 
 
 ## TODOs:
